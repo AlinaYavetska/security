@@ -1,6 +1,7 @@
 package edu.yavetska.security.book;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,5 +42,22 @@ public class BookRestController {
     @PutMapping
     public Book updateBook(@RequestBody Book book) {
         return bookService.update(book);
+    }
+
+    @GetMapping("/hello/user")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public String helloUser() {
+        return "Hello User";
+    }
+
+    @GetMapping("hello/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String helloAdmin() {
+        return "Hello Admin";
+    }
+
+    @GetMapping("hello/unknown")
+    public String helloUnknown() {
+        return "Hello Unknown";
     }
 }

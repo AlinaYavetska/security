@@ -1,0 +1,50 @@
+### GET ALL ITEMS
+GET http://localhost:8080/api/v1/books
+###
+
+### GET BY ID
+GET http://localhost:8080/api/v1/books/2
+###
+
+### DELETE BY ID
+DELETE http://localhost:8080/api/v1/books/3
+###
+
+### CREATE
+POST http://localhost:8080/api/v1/books
+Content-Type: application/json
+
+{
+  "name": "name4",
+  "description": "description4"
+}
+###
+
+### UPDATE
+PUT http://localhost:8080/api/v1/books
+Content-Type: application/json
+
+{
+  "id": "2",
+  "name": "name22",
+  "description": "description22"
+}
+###
+
+### GET HELLO USER
+GET http://localhost:8080/api/v1/books/hello/user
+#Base64 of user's password
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+#Base64 of admin's password
+#Authorization: Basic YWRtaW46YWRtaW4=
+###
+
+### GET HELLO ADMIN
+GET http://localhost:8080/api/v1/books/hello/admin
+#Base64 of admin's password
+Authorization: Basic YWRtaW46YWRtaW4=
+###
+
+### GET HELLO UNKNOWN
+GET http://localhost:8080/api/v1/books/hello/unknown
+###
