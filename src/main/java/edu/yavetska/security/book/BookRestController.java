@@ -45,7 +45,7 @@ public class BookRestController {
     }
 
     @GetMapping("/hello/user")
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @PreAuthorize("hasRole('USER')")
     public String helloUser() {
         return "Hello User";
     }
@@ -57,12 +57,19 @@ public class BookRestController {
     }
 
     @GetMapping("hello/superadmin")
+    @PreAuthorize("hasRole('SUPERADMIN')")
     public String helloSuperAdmin() {
         return "Hello SuperAdmin";
     }
 
     @GetMapping("hello/unknown")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER', 'SUPERADMIN')")
     public String helloUnknown() {
         return "Hello Unknown";
+    }
+
+    @GetMapping("hello/stranger")
+    public String helloStranger() {
+        return "Hello Stranger";
     }
 }
