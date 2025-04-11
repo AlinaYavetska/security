@@ -1,0 +1,49 @@
+### 1. GET ALL ITEMS as admin (should succeed)
+GET http://localhost:8080/api/v1/books
+Authorization: Basic admin admin
+Accept: application/json
+
+### 2. GET ALL ITEMS as user (should succeed)
+GET http://localhost:8080/api/v1/books
+Authorization: Basic user user
+Accept: application/json
+
+### 3. GET ALL ITEMS as superadmin (should succeed)
+GET http://localhost:8080/api/v1/books
+Authorization: Basic superadmin superadmin
+Accept: application/json
+
+### 4. GET specific book as user (should succeed)
+GET http://localhost:8080/api/v1/books/1
+Authorization: Basic user user
+Accept: application/json
+
+### 5. Access /hello/superadmin as superadmin (should succeed)
+GET http://localhost:8080/api/v1/books/hello/superadmin
+Authorization: Basic superadmin superadmin
+Accept: application/json
+
+### 6. Access /hello/superadmin as user (should fail – no permission)
+GET http://localhost:8080/api/v1/books/hello/superadmin
+Authorization: Basic user user
+Accept: application/json
+
+### 7. Access /hello/user as admin (should succeed)
+GET http://localhost:8080/api/v1/books/hello/user
+Authorization: Basic admin admin
+Accept: application/json
+
+### 8. Access /index.html as user (should succeed)
+GET http://localhost:8080/api/v1/books/index.html
+Authorization: Basic user user
+Accept: application/json
+
+### 9. Access /hello/admin as admin (should succeed)
+GET http://localhost:8080/api/v1/books/hello/admin
+Authorization: Basic admin admin
+Accept: application/json
+
+### 10. Access /hello/admin as user (should fail – no permission)
+GET http://localhost:8080/api/v1/books/hello/admin
+Authorization: Basic user user
+Accept: application/json

@@ -56,6 +56,11 @@ public class BookRestController {
         return "Hello Admin";
     }
 
+    @GetMapping("hello/superadmin")
+    public String helloSuperAdmin() {
+        return "Hello SuperAdmin";
+    }
+
     @GetMapping("hello/unknown")
     public String helloUnknown() {
         return "Hello Unknown";
