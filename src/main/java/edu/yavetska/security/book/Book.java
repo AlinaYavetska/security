@@ -19,7 +19,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @ToString
 @Builder
-public class Book {
+public class Book extends AuditMetaData{
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Book book)) return false;
