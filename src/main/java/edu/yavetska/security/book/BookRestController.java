@@ -72,4 +72,22 @@ public class BookRestController {
     public String helloStranger() {
         return "Hello Stranger";
     }
+
+    @GetMapping("hello/editor")
+    @PreAuthorize("hasRole('EDITOR')")
+    public String helloEditor() {
+        return "Hello Editor";
+    }
+
+    @GetMapping("hello/moderator")
+    @PreAuthorize("hasRole('MODERATOR')")
+    public String helloModerator() {
+        return "Hello Moderator";
+    }
+
+    @GetMapping("hello/common")
+    @PreAuthorize("hasAnyRole('ADMIN', 'MODERATOR')")
+    public String helloCommon() {
+        return "Hello Common";
+    }
 }
